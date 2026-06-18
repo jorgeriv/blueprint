@@ -1,0 +1,6 @@
+{
+  "schema": "blueprint.project-definition",
+  "version": "0.1.0",
+  "definition_dir": "definition",
+  "placeholder_policy": "initializer creates structure; skills create substantive content"
+}
