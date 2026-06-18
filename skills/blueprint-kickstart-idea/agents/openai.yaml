@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blueprint Kickstart Idea"
+  short_description: "Shape a raw idea into a project north star"
+  default_prompt: "Use $blueprint-kickstart-idea to help me turn a raw project idea into a clear main goal and scope."

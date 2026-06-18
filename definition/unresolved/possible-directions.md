@@ -4,8 +4,6 @@ Status: active
 
 ## Possible Directions
 
-- `blueprint-kickstart-idea`: turn a raw idea into assumptions, questions, and
-  first definition updates.
 - `blueprint-record-decision`: create decision records from confirmed project
   choices.
 - `blueprint-refine-definition`: update existing definition docs as the project

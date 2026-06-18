@@ -4,7 +4,6 @@ Status: active
 
 ## Open Questions
 
-- What exact skills should ship first?
 - Should Blueprint install skills into `.agents/skills`, another agent-specific
   folder, or leave that to users?
 - Should the CLI support `blueprint skill install` later?

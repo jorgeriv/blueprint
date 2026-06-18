@@ -17,6 +17,10 @@ Blueprint has two layers:
 - agent skills that guide interviews, test assumptions, record decisions, and
   turn conversation into substantive project documentation
 
+The first skill is `blueprint-kickstart-idea`. It turns a raw project idea into
+the initial north star: main goal, audience, first-pass scope, non-goals, and
+open questions.
+
 The project intentionally treats backlog creation as downstream. The first job
 is to clarify what the project is, why it should exist, and what has been
 decided.

@@ -99,6 +99,15 @@ Possible artifact roles:
   without treating them as commitments.
 - `.blueprint/config.json` records Blueprint initialization metadata.
 
+## Skills
+
+Blueprint skills live in `skills/`.
+
+The first skill is `blueprint-kickstart-idea`. It helps an agent gather a raw
+project idea, make assumptions, verify them through a focused interview, and
+document the main goal and first-pass scope. This creates the project north star
+that should guide later, more detailed refinement.
+
 ## Possible Workflow
 
 1. Capture the raw idea.

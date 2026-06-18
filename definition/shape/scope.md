@@ -7,8 +7,10 @@ Status: active
 - a CLI initializer that creates the Blueprint project structure
 - a Project Definition Pack structure under `definition/`
 - lightweight placeholder files created by initialization
-- future agent skills for interviewing, assumption testing, document creation,
-  decision recording, and definition refinement
+- an initial `blueprint-kickstart-idea` skill for interviewing, assumption
+  testing, and documenting the project north star
+- future agent skills for document creation, decision recording, and definition
+  refinement
 - skill-owned templates for substantive document content
 
 ## Later Scope
