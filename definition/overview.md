@@ -13,7 +13,7 @@ idea is still partly conversation and partly intuition.
 Blueprint has two layers:
 
 - an initializer that creates the project definition structure and placeholder
-  files
+  files, then installs bundled Blueprint skills into the project
 - agent skills that guide interviews, test assumptions, record decisions, and
   turn conversation into substantive project documentation
 

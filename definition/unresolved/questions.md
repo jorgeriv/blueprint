@@ -4,8 +4,6 @@ Status: active
 
 ## Open Questions
 
-- Should Blueprint install skills into `.agents/skills`, another agent-specific
-  folder, or leave that to users?
 - Should the CLI support `blueprint skill install` later?
 - How should skills detect whether a placeholder can be replaced safely?
 - Should project definitions have a completeness or readiness check?

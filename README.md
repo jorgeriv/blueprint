@@ -62,6 +62,9 @@ blueprint init --here
 The initializer creates the project structure and placeholders. Existing files
 are preserved by default; use `--force` to overwrite scaffold files.
 
+Initialization also installs bundled Blueprint skills into `.agents/skills/` so
+project-local agents can use the Blueprint workflow immediately.
+
 ## Project Structure
 
 After initialization, a Blueprint project starts with:
@@ -86,6 +89,9 @@ definition/
     possible-directions.md
 .blueprint/
   config.json
+.agents/
+  skills/
+    blueprint-kickstart-idea/
 ```
 
 Possible artifact roles:
@@ -98,6 +104,7 @@ Possible artifact roles:
 - `unresolved/` preserves open questions, tensions, and possible directions
   without treating them as commitments.
 - `.blueprint/config.json` records Blueprint initialization metadata.
+- `.agents/skills/` contains the Blueprint skills installed for the project.
 
 ## Skills
 
@@ -107,6 +114,9 @@ The first skill is `blueprint-kickstart-idea`. It helps an agent gather a raw
 project idea, make assumptions, verify them through a focused interview, and
 document the main goal and first-pass scope. This creates the project north star
 that should guide later, more detailed refinement.
+
+When Blueprint is initialized in another project, bundled skills are copied into
+that project's `.agents/skills/` directory.
 
 ## Possible Workflow
 

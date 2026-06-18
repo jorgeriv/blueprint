@@ -5,6 +5,7 @@ Status: active
 ## In Scope
 
 - a CLI initializer that creates the Blueprint project structure
+- installation of bundled Blueprint skills into initialized projects
 - a Project Definition Pack structure under `definition/`
 - lightweight placeholder files created by initialization
 - an initial `blueprint-kickstart-idea` skill for interviewing, assumption

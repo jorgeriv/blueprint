@@ -7,6 +7,8 @@ Blueprint should stay lightweight and general-purpose.
 Current constraints:
 
 - the initializer should create structure and placeholder files only
+- the initializer should install bundled Blueprint skills into the target
+  project so the harness is usable immediately
 - substantive document templates should live with the skills that use them
 - existing user-authored definition content should be preserved by default
 - backlog generation should not be treated as the main output

@@ -11,6 +11,7 @@ from pathlib import Path
 
 BLUEPRINT_DIR = ".blueprint"
 CONFIG_FILE = "config.json"
+AGENTS_SKILLS_DIR = Path(".agents") / "skills"
 
 
 @dataclass(frozen=True)
@@ -67,26 +68,50 @@ def init_project(project_name: str | None, *, here: bool = False, force: bool = 
     project_path = Path.cwd() if here else Path(project_name).resolve()
     project_path.mkdir(parents=True, exist_ok=True)
 
-    result = copy_scaffold(project_path, force=force)
+    scaffold_result = copy_scaffold(project_path, force=force)
+    skills_result = copy_skills(project_path, force=force)
     write_config(project_path, force=force)
 
     print(f"Blueprint initialized at {project_path}")
-    print(f"Created: {len(result.created)}")
-    print(f"Skipped existing: {len(result.skipped)}")
-    print(f"Overwritten: {len(result.overwritten)}")
+    print(
+        "Definition files: "
+        f"{len(scaffold_result.created)} created, "
+        f"{len(scaffold_result.skipped)} skipped, "
+        f"{len(scaffold_result.overwritten)} overwritten"
+    )
+    print(
+        "Skills: "
+        f"{len(skills_result.created)} created, "
+        f"{len(skills_result.skipped)} skipped, "
+        f"{len(skills_result.overwritten)} overwritten"
+    )
     print()
-    print("Next step: use the Blueprint kickstart skill to turn a raw idea into project context.")
+    print("Next step: use $blueprint-kickstart-idea to turn a raw idea into a project north star.")
 
 
 def copy_scaffold(project_path: Path, *, force: bool = False) -> CopyResult:
+    scaffold_root = resources.files(__package__).joinpath("templates/scaffold")
+    return copy_resource_tree(scaffold_root, project_path, force=force)
+
+
+def copy_skills(project_path: Path, *, force: bool = False) -> CopyResult:
+    skills_root = locate_skills_root()
+    destination_root = project_path / AGENTS_SKILLS_DIR
+    return copy_resource_tree(skills_root, destination_root, force=force)
+
+
+def copy_resource_tree(
+    resource_root: Traversable,
+    destination_root: Path,
+    *,
+    force: bool = False,
+) -> CopyResult:
     created: list[Path] = []
     skipped: list[Path] = []
     overwritten: list[Path] = []
 
-    scaffold_root = resources.files(__package__).joinpath("templates/scaffold")
-
-    for source, relative_path in walk_resources(scaffold_root):
-        destination = project_path / relative_path
+    for source, relative_path in walk_resources(resource_root):
+        destination = destination_root / relative_path
         destination.parent.mkdir(parents=True, exist_ok=True)
 
         existed = destination.exists()
@@ -104,6 +129,18 @@ def copy_scaffold(project_path: Path, *, force: bool = False) -> CopyResult:
             created.append(relative_path)
 
     return CopyResult(created=created, skipped=skipped, overwritten=overwritten)
+
+
+def locate_skills_root() -> Traversable:
+    bundled = resources.files(__package__).joinpath("skills")
+    if bundled.is_dir():
+        return bundled
+
+    source_checkout = Path(__file__).resolve().parents[2] / "skills"
+    if source_checkout.is_dir():
+        return source_checkout
+
+    raise SystemExit("Error: Blueprint skills could not be found in this installation.")
 
 
 def walk_resources(root: Traversable) -> list[tuple[Traversable, Path]]:
